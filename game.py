@@ -2,8 +2,6 @@ from random import randint
 
 choices=["rock", "paper", "scissors"]
 
-#computer=choices[randint(0,2)]
-
 player = False
 
 while player is False:
@@ -12,14 +10,27 @@ while player is False:
 	computer=choices[randint(0,2)]
 	print("computer: ", computer, "player: ", player)
 	if player == computer: 
-		print("tie, no one wins. try again") 
+		print("tie, no one wins. try again \n") 
 	elif player == "quit": 
 		print("you chose to quit, quitter.")
 		exit()
-	else: 
-		print("NOT a tie. now we can check other conditions")
-		if player == "rock":
-			print("check and see what the computer is, and win or lose")
+	elif player == "rock":
+		if computer == "paper":
+			print ("You lose!", computer, "covers", player,"\n")
+		else:
+			print("You won!", player, "smashes", computer, "\n")
+
+	elif player == "paper":
+		if computer == "scissors":
+			print ("You lose!", computer, "cuts", player,"\n")
+		else:
+			print("You won!", player, "covers", computer, "\n")
+
+	elif player == "scissors":
+		if computer == "rock":
+			print ("You lose!", computer, "smashes", player,"\n")
+		else:
+			print("You won!", player, "cuts", computer, "\n")
 
 	player = False
 	computer=choices[randint(0,2)]
