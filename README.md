@@ -1,4 +1,4 @@
-!(https://www.extremetech.com/wp-content/uploads/2015/09/robohand-head-640x353.jpg)
+![rock paper scissors robot](https://www.extremetech.com/wp-content/uploads/2015/09/robohand-head-640x353.jpg "Robot beating a human at Rock Paper Scissors")
 
 # Rock Paper Scissors - Python text-based take on a classic!
 
