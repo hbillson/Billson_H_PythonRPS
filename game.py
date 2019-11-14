@@ -1,96 +1,49 @@
 from random import randint
-from gameFunctions import winlose
-from gameFunctions import config
-from gameFunctions import mod
-
-global player_lives
-global computer_lives
-
-player_lives = config.player_lives
-computer_lives = config.computer_lives
+from gameFunctions import winlose, compare
+from gameVariables import variables, mod
 
 choices = ["rock", "paper", "scissors"]
 
-computer = choices[randint(0,2)]
+# naming these variables in the variables file was the only
+# way I could get my game to work! 
 
-player = False
+variables.computer = choices[randint(0,2)]
+variables.player = False
 
-while player is False:
+while variables.player is False:
+	# added a border and spaces to make it prettier
+
 	print("  =================================================")
 	print("  =                                               =")
 	print("  =                 - COMPUTER -                  =")
-	print("  =                    ", computer_lives, "/ 5                     =")
+	print("  =                    ", variables.computer_lives, "/ 5                     =")
 	print("  =                  - PLAYER -                   =")
-	print("  =                    ", player_lives, "/ 5                     =")
+	print("  =                    ", variables.player_lives, "/ 5                     =")
 	print("  =                                               =")
 	print("  =         First player to 0 lives loses!        =")
 	print("  =                                               =")
 	print("  =================================================\n")
 
-	#print("\n       If you are done playing, type 'quit'.\n")
-	player = input("\n \n                  Choose your weapon!              \n\n               (rock, paper or scissors)          \n \n \n                  Type your choice: \n \n                         ")
-	player = player.lower()
+	# asking the player for their choice
+	# added space and line breaks in the input line to make it prettier 
 
-	if player.lower() == "quit":
-		print("\n             Thank you for playing. Goodbye!")
-		exit()
+	variables.player = input("\n \n                  Choose your weapon!              \n\n               (rock, paper or scissors)          \n \n \n                  Type your choice: \n \n                         ")
+	print("\n\n\n")
 
-	elif computer == player: 
-		print("\n \n \n \n \n \n \n \n \n                  Computer chose:", computer, "\n")
-		print("        It's a tie! No one loses life. Try again. \n") 
+	# calling compare function 
+	compare.comparing("playing")
 
-	elif player.lower() == "rock":
-		if computer == "paper":
-			print("\n \n \n \n \n \n \n \n \n                 Computer chose:", computer, "\n")
-			print("              You lost!", computer, "covers", player,"\n")
-			print("                    You lost a life. \n")
-			player_lives = player_lives -1
-		else:
-			print("\n \n \n \n \n \n \n \n \n                Computer chose:", computer, "\n")
-			print("            You won!", player, "smashes", computer, "\n")
-			print ("                 Computer lost a life.\n")
-			computer_lives = computer_lives -1
+	# making space to make it look better
+	print("\n\n\n\n\n\n")
 
-	elif player.lower() == "paper":
-		if computer == "scissors":
-			print("\n \n \n \n \n \n \n \n \n                Computer chose:", computer, "\n")
-			print("             You lost!", computer, "cuts", player,"\n")
-			print("                    You lost a life.\n")
-			player_lives = player_lives -1
-		else:
-			print("\n \n \n \n \n \n \n \n \n                  Computer chose:", computer, "\n")
-			print("               You won!", player, "covers", computer, "\n")
-			print("                  Computer lost a life.\n")
-			computer_lives = computer_lives -1
+	# calling winlose function
 
-	elif player.lower() == "scissors":
-		if computer == "rock":
-			print("\n \n \n \n \n \n \n \n \n                  Computer chose:", computer, "\n")
-			print("             You lost!", computer, "smashes", player,"\n")
-			print("                   You lost a life.\n")
-			player_lives = player_lives -1
-		else:
-			print("\n \n \n \n \n \n \n \n \n                 Computer chose:", computer, "\n")
-			print("              You won!", player, "cuts", computer, "\n")
-			print("                  Computer lost a life.\n")
-			computer_lives = computer_lives -1
-	
-	else:
-		print("        That's not a valid choice, try again")
-
-	input("               Press any key to continue. \n \n \n \n \n \n \n \n \n \n")
-
-	if player_lives is 0: 
-		# the only way I could get the lives to reset properly
-		# was to reset the lives here, before calling the winlose function
-		player_lives = config.player_lives
-		computer_lives = config.computer_lives
+	if variables.player_lives is 0: 
 		winlose.winorlose("lost")
 
-	elif computer_lives is 0: 
-		player_lives = config.player_lives
-		computer_lives = config.computer_lives
+	elif variables.computer_lives is 0: 
 		winlose.winorlose("win")
 
-	player = False
-	computer = choices[randint(0,2)]
+	# resetting
+	variables.player = False
+	variables.computer = choices[randint(0,2)]
