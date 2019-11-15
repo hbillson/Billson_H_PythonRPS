@@ -1,5 +1,4 @@
 from random import randint
-from gameFunctions import winlose
 from gameVariables import variables, mod
 
 
@@ -9,8 +8,8 @@ def comparing(status):
 		exit()
 
 	# the crazy line breaks and spaces makes it look like
-	# the points / player choice / results are on
-	# separate pages, making the game easier to read
+	#   the points / player choice / results are on
+	#   separate pages, making the game easier to read
 
 	elif variables.computer == variables.player: 
 		print("\n \n \n \n \n \n \n \n \n                  Computer chose:", variables.computer, "\n")
@@ -42,8 +41,8 @@ def comparing(status):
 
 	elif variables.player == "scissors":
 		if variables.computer == "rock":
-			print("\n \n \n \n \n \n \n \n \n                  Computer chose:", computer, "\n")
-			print("             You lost!", computer, "smashes", player,"\n")
+			print("\n \n \n \n \n \n \n \n \n                  Computer chose:", variables.computer, "\n")
+			print("             You lost!", variables.computer, "smashes", variables.player,"\n")
 			print("                   You lost a life.\n")
 			variables.player_lives = variables.player_lives -1
 		else:

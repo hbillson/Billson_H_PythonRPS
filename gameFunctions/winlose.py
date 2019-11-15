@@ -28,5 +28,6 @@ def winorlose(status):
 		player = False
 		
 	else: 
-		print("Make a valid choice. Y(es) or N(o)")
+		print("\n\n\n\n          Make a valid choice. Y(es) or N(o)\n\n\n")
+		winorlose(status)
 
